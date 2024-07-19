@@ -1,3 +1,15 @@
+import store from '../store/index.js';
+
+
+const savedState = JSON.parse(localStorage.getItem('financial_app_state'));
+if (savedState) {
+    store.replaceState(savedState);
+}
+
+store.subscribe((mutation, state) => {
+    localStorage.setItem('financial_app_state', JSON.stringify(state));
+});
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -9,21 +21,14 @@ function getRandomColor() {
 
 
 function aggregateData(data, key) {
-    console.log('Input data:', data);
-    console.log('Key:', key);
 
     const aggregatedData = {};
 
     data.forEach(item => {
-        let value = String(item[key]).trim().toLowerCase(); // Преобразуем в строку в нижнем регистре без пробелов
+        let value = String(item[key]).trim().toLowerCase();
 
-        console.log('Item:', item);
-        console.log('Value:', value);
-
-        // Проверка корректности данных
         if (!value || typeof item.amount !== 'number') {
-            console.error(`Invalid data for key '${key}' in item:`, item);
-            return; // Прерываем выполнение функции, если данные некорректны
+            return;
         }
 
         if (aggregatedData.hasOwnProperty(value)) {
@@ -33,14 +38,10 @@ function aggregateData(data, key) {
         }
     });
 
-    console.log('Aggregated data:', aggregatedData);
-
     const result = Object.keys(aggregatedData).map(category => ({
         [key]: category,
         amount: aggregatedData[category]
     }));
-
-    console.log('Result:', result);
 
     return result;
 }

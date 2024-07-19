@@ -1,6 +1,6 @@
 <template>
     <div class="balance">
-        <h2 class="balance__title">Баланс</h2>
+        <h2 class="balance__title">Баланс:</h2>
         <p class="balance__incomes">Общие доходы: {{ totalIncomes }}</p>
         <p class="balance__expenses">Общие расходы: {{ totalExpenses }}</p>
         <p class="balance__net-balance">Общий баланс: {{ netBalance }}</p>

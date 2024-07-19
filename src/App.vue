@@ -4,15 +4,15 @@
       <h1 class="text-3xl font-bold mb-4 text-center p-2">Контроль финансов</h1>
     </header>
 
-    <div class="flex">
-      <aside class="w-1/3">
+    <div class="flex flex-col md:flex-row">
+      <aside class="w-full md:w-1/3 mb-4 md:mb-0">
         <PieChartExpense class="mb-4" />
         <PieChartIncome />
       </aside>
 
-      <div class="w-2/3">
-        <div class="flex items-center mb-4 border-b-2	border-gray-300">
-          <Balance class="w-1/2 mr-4" />
+      <div class="w-full md:w-2/3">
+        <div class="flex items-center mb-4 border-b-2 border-gray-300">
+          <Balance class="w-1/2 md:mr-4" />
           <LargestExpense class="w-1/2" />
         </div>
 
@@ -21,9 +21,9 @@
           <button @click="openAddIncomeModal" class="btn btn-green">Добавить доход</button>
         </div>
 
-        <div class="flex">
-          <OverallExpense class="w-1/2 mr-4" />
-          <OverallIncome class="w-1/2" />
+        <div class="flex flex-col sm:flex-row">
+          <OverallExpense class="w-full sm:w-1/2 md:mr-4 mb-4 sm:mb-0" />
+          <OverallIncome class="w-full sm:w-1/2" />
         </div>
       </div>
     </div>
@@ -31,15 +31,15 @@
     <AddIncomeModal v-if="isAddIncomeModalOpen" @close="closeModal('addIncome')" />
     <AddExpenseModal v-if="isAddExpenseModalOpen" @close="closeModal('addExpense')" />
 
-    
+    <footer class="fixed bottom-0 left-0 w-full">
+      <div class=" p-1 text-center">
+        <p>&copy; 2024. Все права защищены.</p>
+      </div>
+    </footer>
   </div>
-  <footer class="bg-slate-400 fixed bottom-0 w-full">
-    <p class="text-center">&copy; 2024. Все права защищены.</p>
-  </footer>
 </template>
 
 <script>
-
 import AddExpenseModal from './components/Modals/AddExpenseModal.vue';
 import AddIncomeModal from './components/Modals/AddIncomeModal.vue';
 import OverallExpense from './components/Dashboard/OverallExpense.vue';
@@ -99,5 +99,46 @@ export default {
 
 .btn:hover {
   background-color: #357bd8;
+}
+
+
+@media (min-width: 640px) {
+
+  /* sm */
+  .container {
+    width: 95%;
+  }
+
+}
+
+@media (min-width: 768px) {
+
+  /* md */
+  .flex-col {
+    flex-direction: column;
+  }
+
+
+  .flex-row {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* lg */
+  .container {
+    width: 90%;
+  }
+
+}
+
+@media (min-width: 1280px) {
+
+  /* xl */
+  .container {
+    width: 85%;
+  }
+
 }
 </style>

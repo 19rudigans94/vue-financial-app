@@ -2,11 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #app {
+html,
+body,
+#app {
     height: 100%;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+footer {
+    background-color: #2d3748;
+    color: #cbd5e0;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+
+    /* sm */
+    footer {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* md */
+    footer {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* lg */
+    footer {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    /* xl */
+    footer {
+        font-size: 16px;
+    }
 }
